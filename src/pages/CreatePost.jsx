@@ -3,11 +3,14 @@ import styles from "../styles/CreatePostContainer.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from "react";
+import { useContext } from "react";
+import { PostContext } from "../context/PostContext";
+import { useNavigate } from 'react-router-dom'; 
 import "../App.css";
 
 const CreatePost = () => {
-  const [posts, setPosts] = useState([]);
+  const { addPost } = useContext(PostContext);
+  const navigate = useNavigate();
   const schema = yup.object().shape({
     title: yup
       .string()
@@ -33,17 +36,9 @@ const CreatePost = () => {
   });
 
   function onSubmit(data) {
-    const newPost = {
-      id: Date.now(),
-      title: data.title,
-      author: data.author,
-      content: data.content,
-      date: new Date().toLocaleDateString(),
-    };
-    setPosts([...posts, newPost]);
-    console.log("Form data:", data);
-    console.log("New post created:", newPost);
+    addPost(data);
     reset();
+    navigate("/");
   }
 
   return (

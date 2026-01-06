@@ -1,32 +1,130 @@
 #root {
-  margin: 0 ;
-  padding:0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Courier New", Courier, monospace;
 }
 
-
-body{
+body {
   background-color: #f1f2f6;
+  padding-top: 80px;
 }
 
 /* Navbar Component */
 .navbar {
   display: flex;
-  justify-content:center;
+  justify-content: space-around;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   gap: 30px;
+  height: 60px;
+  padding: 0 20px;
+  border-radius: 0;
+  border: 1px solid #34495e;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #34495e;
+  text-transform: uppercase;
+  background-color: #fff;
 }
 
-.navlink{
+.navlink {
   text-decoration: none;
-  font-size: 20px;
-  margin-top: 10px;
-  color: #5352ed;
-  font-family: 'Courier New', Courier, monospace;
-
+  font-size: 18px;
+  margin: 0 15px;
+  color: #34495e;
+  text-transform: uppercase;
 }
-.navlink:hover{
-color: #34495e;
-text-decoration: underline;
+.navlink:hover {
+  color: #2e86c1;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.navbar-title {
+  font-size: 24px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #34495e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Post Component */
+.post {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  background-color: #f1f2f6;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #34495e;
+  width: 50%;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #34495e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.edit-btn {
+  background-color: #2e86c1;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  grid-column: 1 / 2;
+}
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  grid-column: 3 / 4;
+}
+.edit-btn:hover {
+  background-color: #27ae60;
+  color: #fff;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+.delete-btn:hover {
+  background-color: #c0392b;
+  color: #fff;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+/* Home Page */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

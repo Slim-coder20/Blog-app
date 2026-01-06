@@ -1,10 +1,20 @@
-import React from 'react'
-import "../App.css"
-
+import React from "react";
+import "../App.css";
+import { PostContext } from "../context/PostContext";
+import { useContext } from "react";
+import { Post } from "../components/Post";
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const { posts } = useContext(PostContext);
 
-export default Home
+  return (
+    <div className="container">
+      <ul className="post-list">
+        {posts.map((post, key) => (
+          <Post key={key} post={post} />
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Home;

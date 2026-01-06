@@ -1,9 +1,32 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0 ;
+  padding:0;
+  box-sizing: border-box;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
+body{
+  background-color: #f1f2f6;
+}
+
+/* Navbar Component */
+.navbar {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 30px;
+}
+
+.navlink{
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 10px;
+  color: #5352ed;
+  font-family: 'Courier New', Courier, monospace;
+
+}
+.navlink:hover{
+color: #34495e;
+text-decoration: underline;
+}

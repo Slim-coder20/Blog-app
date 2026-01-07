@@ -46,18 +46,21 @@ npm run dev
 ## 🔮 Features futures
 
 ### Authentification et sécurité
+
 - 🔐 **Système d'authentification** : Connexion et déconnexion des utilisateurs
 - 👤 **Création de compte utilisateur** : Inscription avec validation
 - 🔒 **Protection des routes** : Routes privées nécessitant une authentification
 - 👥 **Gestion des rôles** : Système de permissions (utilisateur, administrateur)
 
 ### Base de données et production
+
 - 🗄️ **MongoDB en production** : Migration vers une base de données MongoDB pour la persistance des données
 - 🌐 **API Backend** : Développement d'une API REST avec Node.js/Express
 - 🔄 **Synchronisation** : Synchronisation des données entre les appareils
 - 📊 **Analytics** : Statistiques et analytics des posts
 
 ### Améliorations UX/UI
+
 - 🎨 **Thèmes** : Mode sombre/clair
 - 🔍 **Recherche** : Fonctionnalité de recherche dans les posts
 - 🏷️ **Tags et catégories** : Organisation des posts par tags

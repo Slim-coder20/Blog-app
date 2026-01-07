@@ -150,70 +150,94 @@ body {
   gap: 20px;
 }
 
-/* Navbar Mobile */
+/* Navbar Mobile - Caché par défaut sur desktop */
 .navbar-mobile {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1001;
-  height: 60px;
-  padding: 0 20px;
-  border-bottom: 1px solid #34495e;
-  background-color: #fff;
+  display: none;
 }
 
-/* Bouton Burger */
+@media (max-width: 768px) {
+  .navbar-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    height: 60px;
+    padding: 0 20px;
+    border-bottom: 1px solid #34495e;
+    background-color: #fff;
+  }
+
+  /* Cacher la navbar desktop sur mobile */
+  .navbar {
+    display: none;
+  }
+}
+
+/* Bouton Burger - Visible uniquement sur mobile */
 .burger-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 30px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1002;
+  display: none;
 }
 
-.burger-menu span {
-  width: 100%;
-  height: 3px;
-  background-color: #34495e;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-  transform-origin: center;
+@media (max-width: 768px) {
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+  }
+
+  .burger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: #34495e;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .burger-menu.open span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .burger-menu.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-menu.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
 }
 
-.burger-menu.open span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
-}
-
-.burger-menu.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.burger-menu.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Menu Mobile */
+/* Menu Mobile - Caché par défaut sur desktop */
 .mobile-menu {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  right: 0;
-  background-color: #fff;
-  border-bottom: 1px solid #34495e;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #34495e;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .mobile-menu.open {
@@ -221,36 +245,42 @@ body {
 }
 
 .mobile-navlink {
-  display: block;
-  padding: 15px 20px;
-  text-decoration: none;
-  color: #34495e;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-bottom: 1px solid #f1f2f6;
-  transition: all 0.3s ease;
+  display: none;
 }
 
-.mobile-navlink:hover {
-  background-color: #f1f2f6;
-  color: #2e86c1;
-  padding-left: 30px;
-}
+@media (max-width: 768px) {
+  .mobile-navlink {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #34495e;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #f1f2f6;
+    transition: all 0.3s ease;
+  }
 
-.mobile-navlink:last-child {
-  border-bottom: none;
-}
+  .mobile-navlink:hover {
+    background-color: #f1f2f6;
+    color: #2e86c1;
+    padding-left: 30px;
+  }
 
-/* Overlay pour fermer le menu */
-.mobile-menu-overlay {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 999;
+  .mobile-navlink:last-child {
+    border-bottom: none;
+  }
+
+  /* Overlay pour fermer le menu */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
 }
 
 /* Responsive HomePage and Navbar  */

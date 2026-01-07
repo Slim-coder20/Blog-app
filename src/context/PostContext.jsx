@@ -6,6 +6,7 @@ export const PostContext = createContext({
   addPost: () => {},
   findPostById: () => {},
   updatePost: () => {},
+  deletePost: () => {},
 });
 
 function PostProvider(props) {
@@ -83,9 +84,14 @@ function PostProvider(props) {
     );
   }
 
+  // delete a Post // 
+  function deletePost(id) {
+    setPosts((prev) => prev.filter((post) => post.id !== id));
+  }
+
   return (
     <PostContext.Provider
-      value={{ posts, setPosts, addPost, findPostById, updatePost }}
+      value={{ posts, setPosts, addPost, findPostById, updatePost, deletePost }}
     >
       {props.children}
     </PostContext.Provider>

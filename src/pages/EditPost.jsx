@@ -13,7 +13,7 @@ const EditPost = () => {
   // Initialisation des variables de navigation et du context //
   const navigate = useNavigate();
   const { id } = useParams();
-  const { findPostById, updatePost } = useContext(PostContext);
+  const { findPostById, updatePost, deletePost } = useContext(PostContext);
   const post = findPostById(Number(id));
 
   // Utilisation de useEffect pour réinitialiser le formulaire avec les données du post si il existe //
@@ -51,6 +51,7 @@ const EditPost = () => {
       id: Number(id),
       date: post.date, // Préserver la date originale
     });
+
     navigate("/");
   }
 
@@ -94,6 +95,9 @@ const EditPost = () => {
         )}
         <button type="submit" className={styles.createPostFormButton}>
           Update Post
+        </button>
+        <button onClick={() => deletePost(Number(id))} className={styles.deletePostButton}>
+          Delete Post
         </button>
       </form>
     </div>

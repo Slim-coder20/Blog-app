@@ -36,6 +36,8 @@ function PostProvider(props) {
       date: new Date().toLocaleDateString(),
     },
   ]);
+
+  // Add a new Post //
   function addPost(newPost) {
     setPosts((prev) => {
       const lastId = prev.length > 0 ? prev[prev.length - 1].id : 0;
@@ -45,8 +47,17 @@ function PostProvider(props) {
       ];
     });
   }
+  // Update a Post //
+  function updatePost(id, updatedPost) {
+    setPosts((prev) => {
+      return prev.map((post) =>
+        post.id === parseInt(id) ? { ...updatedPost, id: parseInt(id) } : post
+      );
+    });
+  }
+
   return (
-    <PostContext.Provider value={{ posts, setPosts, addPost }}>
+    <PostContext.Provider value={{ posts, setPosts, addPost, updatePost }}>
       {props.children}
     </PostContext.Provider>
   );

@@ -1,25 +1,40 @@
 import React from "react";
-import "../App.css";
-import styles from "../styles/EditPostContainer.module.css";
+import { PostContext } from "../context/PostContext";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import styles from "../styles/EditPostContainer.module.css";
 import * as yup from "yup";
-import { useContext } from "react";
-import { PostContext } from "../context/PostContext";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import "../App.css";
 const EditPost = () => {
+  // Initialisation des variables de navigation et du context //
   const navigate = useNavigate();
   const { id } = useParams();
-  const { posts, updatePost } = useContext(PostContext);
-  const post = posts.find((post) => post.id === parseInt(id));
+  const { findPostById, updatePost } = useContext(PostContext);
+  const post = findPostById(Number(id));
 
+  // Utilisation de useEffect pour réinitialiser le formulaire avec les données du post si il existe //
+  useEffect(() => {
+    if (post) {
+      reset({
+        title: post.title,
+        author: post.author,
+        content: post.content,
+        date: post.date,
+      });
+    }
+  }, [post]);
+
+  // Définition du schéma de validation AVANT son utilisation
   const schema = yup.object().shape({
     title: yup.string().required("Title is required"),
     author: yup.string().required("Author is required"),
     content: yup.string().required("Content is required"),
   });
-
+  // Initialisation du formulaire avec useForm et yupResolver pour la validation des données //
   const {
     register,
     handleSubmit,
@@ -27,22 +42,28 @@ const EditPost = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: post
-      ? {
-          title: post.title,
-          author: post.author,
-          content: post.content,
-        }
-      : {},
   });
 
+  // Fonction pour mettre à jour le post //
   function onSubmit(data) {
-    updatePost(parseInt(id), { ...data, id: parseInt(id), date: post.date });
-    reset();
+    updatePost({
+      ...data,
+      id: Number(id),
+      date: post.date, // Préserver la date originale
+    });
     navigate("/");
   }
+
   if (!post) {
-    return <div>Post not found</div>;
+    return (
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <h1>Post not found</h1>
+        <p>The post you are looking for does not exist.</p>
+        <button onClick={() => navigate("/")} className={styles.goToHomeButton}>
+          Go to Home
+        </button>
+      </div>
+    );
   }
   return (
     <div className={styles.createPostContainer}>
@@ -72,7 +93,7 @@ const EditPost = () => {
           <p className={styles.error}>{errors.content.message}</p>
         )}
         <button type="submit" className={styles.createPostFormButton}>
-          Create
+          Update Post
         </button>
       </form>
     </div>

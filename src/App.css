@@ -92,7 +92,6 @@ body {
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 10px;
-  border: 1px solid #34495e;
   width: 50%;
   margin: 20px auto;
   text-align: center;
@@ -101,6 +100,13 @@ body {
   color: #34495e;
   text-transform: uppercase;
   letter-spacing: 2px;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid #34495e;
+  }
 }
 
 .edit-btn {

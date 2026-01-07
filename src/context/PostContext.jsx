@@ -48,16 +48,19 @@ function PostProvider(props) {
     });
   }
   // Update a Post //
-  function updatePost(id, updatedPost) {
-    setPosts((prev) => {
-      return prev.map((post) =>
-        post.id === parseInt(id) ? { ...updatedPost, id: parseInt(id) } : post
-      );
-    });
+  function findPostById(id) {
+    return posts.find((post) => post.id === id);
+  }
+  function updatePost(updatedPost) {
+    setPosts((prev) =>
+      prev.map((post) => (post.id === updatedPost.id ? updatedPost : post))
+    );
   }
 
   return (
-    <PostContext.Provider value={{ posts, setPosts, addPost, updatePost }}>
+    <PostContext.Provider
+      value={{ posts, setPosts, addPost, findPostById, updatePost }}
+    >
       {props.children}
     </PostContext.Provider>
   );

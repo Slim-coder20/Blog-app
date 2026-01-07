@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
+
 export const Navbar = () => {
   return (
+    // Navbar Desktop Version //
     <div className="navbar">
       <Link to="/" className="navbar-title">
       <img src="/blog.png" alt="logo" className="navbar-logo" />

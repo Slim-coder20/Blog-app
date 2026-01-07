@@ -6,11 +6,15 @@ import CreatePost from "./pages/CreatePost.jsx";
 import EditPost from "./pages/EditPost.jsx";
 import DeletePost from "./pages/DeletePost.jsx";
 import PostProvider from "./context/PostContext.jsx";
+import NavbarMobile from "./components/NavbarMobile.jsx";
+import { useState } from "react";
 function App() {
+
   return (
     <div>
       <PostProvider>
         <Navbar />
+        <NavbarMobile />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create-post" element={<CreatePost />} />
